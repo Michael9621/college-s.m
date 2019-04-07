@@ -1,0 +1,11 @@
+#myInput{
+  width: 130px;
+  background-image: url('searchicon.png');
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+#myInput:focus {
+  width: 100%;
+}
