@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset ('assets/img/apple-icon.png') }}">
   <link rel="icon" type="image/png" href="{{asset ('assets/img/favicon.png') }}">
-  <title>
-    JEWEL PROFESSIONAL COLLEGE
-  </title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -55,6 +53,7 @@
                   <div class="photo">
                     <img src="{{ asset('assets/img/anime3.png') }}" alt="Profile Photo">
                   </div>
+                  <p>{{ Auth::user()->name }}</p>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
                     Log out
@@ -66,7 +65,14 @@
                   </li>
                   <li class="dropdown-divider"></li>
                   <li class="nav-link">
-                    <a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a>
+                    <a href="{{ route('logout') }}" class="nav-item dropdown-item"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                       logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                       @csrf
+                    </form>
                   </li>
                 </ul>
               </li>

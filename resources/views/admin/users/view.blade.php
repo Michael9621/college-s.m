@@ -21,7 +21,7 @@
             @foreach($users as $user)
                 <tr>
                     <td class="text-center">{{ $user->id }}</td>
-                    <td>{{ $user->staffName }}</td>
+                    <td>{{ $user->name }}</td>
                     <td>{{ $user->departments->name}}
                         @if($user->hod==1)
                           <span><b>: H.O.D </b></span>

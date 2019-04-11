@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Department;
-
+use Auth;
 
 class UserController extends Controller
 {
@@ -59,6 +59,14 @@ class UserController extends Controller
     {
         $user= User::find($id);
         return view('singlelecturer')->with('user',$user);
+    }
+
+
+    public function lecturer()
+    {
+        $id = Auth::user()->id;
+        $lecturer = User::find($id);
+        return view('lecturer')->with('lecturer',$lecturer);
     }
 
     /**

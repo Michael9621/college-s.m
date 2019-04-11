@@ -13,6 +13,7 @@
                 <th>Units</th>
                 <th>Department</th>
                 <th>View results</th>
+                <th>print results</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -32,6 +33,7 @@
                     </td>
                     <td>{{ $student->courses->departments->name }}</td>
                     <td><a class="btn btn-info btn-simple" href="{{ route('single_student_result',['id' => $student->id]) }}">view results</a></td>
+                    <td><a class="btn btn-info btn-simple" href="{{ route('studentpdf',['id' => $student->id]) }}" target="_blank">print results</a></td>
                     <td class="td-actions">
                         <button type="button" rel="tooltip" class="btn btn-info btn-sm btn-icon">
                             <i class="tim-icons icon-single-02"></i>

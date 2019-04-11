@@ -18,6 +18,18 @@
               <p>Dashboard</p>
             </a>
           </li>
+          @if(!Auth::user()->admin)
+          <li class="">
+            <a href="" class=" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-chart-pie-36"></i>
+              <p>profile</p>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{route('profile')}}">profile</a>
+            </div>
+         </li> 
+          @endif
+          @if(Auth::user()->admin)    
           <li class="">
             <a href="" class=" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="tim-icons icon-chart-pie-36"></i>
@@ -29,10 +41,11 @@
               <a class="dropdown-item" href="{{route('create_course')}}">Create a course</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{route('create_unit')}}">Create a unit</a>
-              <a class="dropdown-item" href="{{route('create_student')}}">Create a student</a>
-
-          </div>
+              <a class="dropdown-item" href="{{route('create_student')}}">Create a student</a>   
+            </div>
          </li>
+         @endif
+         @if(Auth::user()->admin) 
           <li class="">
             <a href="" class=" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="tim-icons icon-chart-pie-36"></i>
@@ -47,7 +60,8 @@
               <a class="dropdown-item" href="{{route('view_students')}}">View students</a>
               <a class="dropdown-item" href="{{route('student_result')}}">View result</a>
             </div>
-         </li>        
+         </li> 
+         @endif      
         </ul>
       </div>
     </div>

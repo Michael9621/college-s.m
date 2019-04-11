@@ -26,7 +26,7 @@
         <select class="form-control bg-dark" id="exampleFormControlSelect1" name="user">
           @if($users->count()>0)
             @foreach($users as $user)
-              <option value="{{ $user->id }}">{{ $user->staffName }}</option>
+              <option value="{{ $user->id }}">{{ $user->name }}</option>
             @endforeach
           @endif
         </select>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Result;
 use App\Unit;
 use App\Student;
+use PDF;
 
 class ResultController extends Controller
 {
@@ -88,13 +89,39 @@ class ResultController extends Controller
     public function singleunit($id)
     {
         
-        //$unit= Unit::find($id);
+        $unit= Unit::find($id);
 
         $results=Result::where('unit_id',$id)->get();
 
         return view('admin.results.unit_result')
-        ->with('results', $results);
+        ->with('results', $results) 
+        ->with('unit', $unit);
 
+    }
+
+    public function unitpdf($id)
+    {
+        $unit= Unit::find($id);
+        $results=Result::where('unit_id',$id)->get();
+
+        $pdf = PDF::loadView('unitpdf', compact('unit','results'));
+
+        return $pdf->stream('unitpdf.pdf');
+    }
+
+     public function studentpdf($id)
+    {
+        $student=Student::find($id);
+
+        $results=Result::where('student_id',$id)->get();
+
+        $result_sum=Result::where('student_id',$id)->sum('marks');
+
+        $av=$result_sum/$results->count();
+
+        $pdf = PDF::loadView('studentpdf', compact('student','results','av'));
+
+        return $pdf->stream('studentpdf.pdf');
     }
 
 

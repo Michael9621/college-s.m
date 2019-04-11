@@ -15,6 +15,7 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         return view('admin.departments.view')->with('users', User::all())
