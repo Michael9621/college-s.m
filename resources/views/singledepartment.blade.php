@@ -8,23 +8,21 @@
   	<h1>{{ $department->name }} department</h1>
     <h4>department lecturers</h4>
 
-    <ul class="list-group">
   	@foreach($department->users as  $lec)
   	 @if($lec->hod==1)
-     <li class="list-group-item bg-dark"><b>{{ $lec->staffName}} - H.O.D</b>
+       <p> <b>{{ $lec->name}} - H.O.D</b> </p>
      @else
-     <li class="list-group-item bg-dark">{{ $lec->staffName}}
+       <p> {{ $lec->name}} </p>
      @endif
-     </li>
   	@endforeach
-    </ul>
 
   	<h4>Department's courses</h4>
   	<table class="table" id="myTable">
 	    <thead>
 	        <tr>
-	            <th style="width:30%;">Name</th>
-	            <th style="width:100%;">Units & corresponding Lectureres</th>
+	            <th style="width:20%;">Name</th>
+	            <th style="width:60%;">Units & corresponding Lectureres</th>
+	            <th>students</th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -44,13 +42,16 @@
 			         	
 			         	@foreach($unit->users as $user)
 			         	<div class="col-sm-6">
-			         		<p>Lec. {{ $user->staffName }}</p>
+			         		<p>Lec. {{ $user->name }}</p>
 			         	</div>
 			         	@endforeach
 
 			         	@endforeach
 		         	</div>
 	           </div>
+	         </td>
+	         <td>
+	         	{{$course->students->count()}}
 	         </td>
 	         </tr>
 	         @endforeach

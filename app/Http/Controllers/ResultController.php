@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Result;
 use App\Unit;
 use App\Student;
 use PDF;
+use Arr;
+
 
 class ResultController extends Controller
 {
@@ -102,6 +103,7 @@ class ResultController extends Controller
     public function unitpdf($id)
     {
         $unit= Unit::find($id);
+        
         $results=Result::where('unit_id',$id)->get();
 
         $pdf = PDF::loadView('unitpdf', compact('unit','results'));
@@ -121,7 +123,7 @@ class ResultController extends Controller
 
         $pdf = PDF::loadView('studentpdf', compact('student','results','av'));
 
-        return $pdf->stream('studentpdf.pdf');
+        return $pdf->stream($student->name.'.pdf');
     }
 
 

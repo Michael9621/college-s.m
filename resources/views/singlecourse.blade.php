@@ -14,7 +14,7 @@
 @foreach($course->units as $unit)
 	@foreach($unit->users as $user)
 	<p>
-	   {{$unit->name}} - {{$user->staffName}}
+	   {{$unit->name}} - {{$user->name}}
 	</p>
 	@endforeach
 @endforeach

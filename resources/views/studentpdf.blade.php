@@ -50,6 +50,11 @@
 		#intro{
 			width: 100%;
 		}
+		.fix_height{
+			height: 45%;
+		}
+
+		
 	</style>
 </head>
 <body>
@@ -63,8 +68,9 @@
 	    <h5>Tel:0701 300 017 / 0777 300 201</h5>
 	    
 	    <hr>
-	    <h4>TRANSCRIPT</h4>
+	    <h4>RESULT SLIP</h4>
 	    <br>
+
 	    <table id="intro">
 	    	<tr>
 	    		<td>NAME</td>
@@ -87,52 +93,72 @@
 
     <br>
 
-	<table id="customers">
-		  <tr>
-		    <th>Unit name</th>
-		    <th>Marks</th>
-		    <th>Class</th>
-		  </tr>
-		@foreach($results as $result)
+    <div class="fix_height">
+		<table id="customers">
+			  <tr>
+			    <th>Unit name</th>
+			    <th>Marks</th>
+			    <th>Class</th>
+			  </tr>
+			@foreach($results as $result)
 
-			<tr style="line-height:8px; height:8px; ">
-			    <td>{{$result->unit->name}}</td>
-			    <td>{{ $result->marks}}</td>
-			    <td>@if($result->marks >=75)
+				<tr>
+				    <td>{{$result->unit->name}}</td>
+				    <td>{{ $result->marks}}</td>
+				    <td>@if($result->marks >=75)
 
-		        	{{ "DISTINCTION" }}
+			        	{{ "DISTINCTION" }}
 
-		        @elseif($result->marks > 59 && $result->marks < 75)
-		    
-		    		{{ "CREDIT" }}
+			        @elseif($result->marks > 59 && $result->marks < 75)
+			    
+			    		{{ "CREDIT" }}
 
-		    	@elseif($result->marks > 39 && $result->marks < 60)
-		        
-		        	{{ "PASS" }}
+			    	@elseif($result->marks > 39 && $result->marks < 60)
+			        
+			        	{{ "PASS" }}
 
-		        @else
+			        @else
 
-		        	{{ "FAIL" }}
+			        	{{ "FAIL" }}
 
-		        @endif
-		    	</td>
-		    </tr>
-		@endforeach
-	</table>
+			        @endif
+			    	</td>
+			    </tr>
+
+			@endforeach
+		</table>
+	</div>
    
     <br>
 
-    <p><b>AVERAGE GRADE: 
-     @if($av >= 75)
-     	{{ "DISTINCTION" }}
-     @elseif($av > 59 &&  $av < 75)
-     	{{ "CREDIT" }}
-     @elseif($av >39 && $av < 60)
-        {{ "PASS" }}
-     @else
-     	{{ "FAIL" }}
-     @endif</b>
-    </p>
+    <table id="intro">
+	    <tr>
+		     <td>
+			    <b>AVERAGE GRADE: 
+			     @if($av >= 75)
+			     	{{ "DISTINCTION" }}
+			     @elseif($av > 59 &&  $av < 75)
+			     	{{ "CREDIT" }}
+			     @elseif($av >39 && $av < 60)
+			        {{ "PASS" }}
+			     @else
+			     	{{ "FAIL" }}
+			     @endif</b>
+		 	</td>
+		 	<td>
+			    <b>REMARKS: 
+			     @if($av >= 75)
+			     	{{ "EXCELLENT" }}
+			     @elseif($av > 59 &&  $av < 75)
+			     	{{ "GOOD" }}
+			     @elseif($av >39 && $av < 60)
+			        {{ "SATISFACTORY" }}
+			     @else
+			     	{{ "POOR" }}
+			     @endif</b>
+		 	</td>
+	    </tr>
+	</table>
     
     <br>
 

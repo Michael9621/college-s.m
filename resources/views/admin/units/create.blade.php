@@ -10,17 +10,22 @@
         <input type="text" class="form-control bg-dark" id="exampleFormControlInput1" placeholder="e.g introduction to ict" name="name">
       </div>
       
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">course</label>
-        <select class="form-control bg-dark" id="exampleFormControlSelect1" name="course">
-           @if($courses->count()>0)
-            @foreach($courses as $course)
-              <option value="{{ $course->id }}">{{ $course->name }}</option>
-            @endforeach
-          @endif
-        </select>
-      </div>
-
+      <label for="exampleFormControlInput1">Course name</label>
+      @if($courses->count()>0)
+        @foreach($courses as $course)
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="{{$course->id}}" name="course[]">
+                 {{$course->name}}
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        @endforeach
+      @endif
+      
+      <br>
       <div class="form-group">
         <label for="exampleFormControlSelect1">lecturer</label>
         <select class="form-control bg-dark" id="exampleFormControlSelect1" name="user">

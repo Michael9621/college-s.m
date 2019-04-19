@@ -10,7 +10,6 @@
                 <th>Admission number</th>
                 <th>Name</th>
                 <th>Course</th>
-                <th>Units</th>
                 <th>Department</th>
                 <th>View results</th>
                 <th>print results</th>
@@ -25,12 +24,6 @@
                     <td>{{ $student->admission_number }}</td>
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->courses->name }}</td>
-                    <td>
-
-                        @foreach($student->courses->units as $unit)
-                           <p>{{ $unit->name}}</p>
-                        @endforeach
-                    </td>
                     <td>{{ $student->courses->departments->name }}</td>
                     <td><a class="btn btn-info btn-simple" href="{{ route('single_student_result',['id' => $student->id]) }}">view results</a></td>
                     <td><a class="btn btn-info btn-simple" href="{{ route('studentpdf',['id' => $student->id]) }}" target="_blank">print results</a></td>

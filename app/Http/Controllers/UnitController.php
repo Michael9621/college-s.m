@@ -47,12 +47,15 @@ class UnitController extends Controller
         'name'=> $request->name
         
         ]);
-        
+        if(count($request->course)>0){
+            foreach ($request->course as $item => $v) {
+                $unit->courses()->attach($request->course[$item]);
+            }
+        }
         $unit->users()->attach($request->user);
-        $unit->courses()->attach($request->course);
+
         return redirect()->back();
     }
-
     /**
      * Display the specified resource.
      *

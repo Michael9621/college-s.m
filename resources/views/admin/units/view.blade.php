@@ -28,7 +28,7 @@
                         <td><p>{{ $course->departments->name }}</p></td>
                     @endforeach
                     @foreach($unit->users as $user)
-                        <td>{{ $user->staffName }}</td>
+                        <td>{{ $user->name }}</td>
                     @endforeach
 
 
