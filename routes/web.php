@@ -3,9 +3,9 @@
 Auth::routes();
 
 Route::group([ 'middleware' => 'auth'], function(){
-	Route::get('/home', 'HomeController@index')->name('home');
+	//Route::get('/', 'HomeController@index')->name('home');
 
-	Route::get('/admin', 'FrontEndController@index')->name('home');
+	Route::get('/  ', 'FrontEndController@index')->name('home');
 
 	Route::get('/lecturer', 'UserController@lecturer')->name('profile');
 	Route::get('/units/single{id}', 'UnitController@show')->name('single_unit');
@@ -23,6 +23,8 @@ Route::group([ 'middleware' => 'auth'], function(){
 		Route::get('/admin/students/view', 'StudentController@index')->name('view_students');
 		Route::get('/admin/students/create', 'StudentController@create')->name('create_student');
 		Route::post('/admin/students/store', 'StudentController@store')->name('store_student');
+		Route::get('/studentprofile/{id}', 'StudentController@show')->name('studentprofile');
+
 
 		Route::get('/admin/courses/view', 'CourseController@index')->name('view_courses');
 		Route::get('/admin/courses/create', 'CourseController@create')->name('create_course');

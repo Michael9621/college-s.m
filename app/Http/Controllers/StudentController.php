@@ -52,7 +52,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.students.profile')->with('student', Student::find($id));
     }
 
     /**

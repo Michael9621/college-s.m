@@ -2,8 +2,9 @@
 
 @section('content')
 
-<p>Department : {{ $course->departments->name}}</p>
+
 <p>Course name : {{ $course->name }}</p>
+<p>Department : {{ $course->departments->name}}</p>
 
 <br>
 
